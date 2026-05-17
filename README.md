@@ -5,5 +5,5 @@
 
 ## Технологии
 
-Frontend: HTML, CSS, JS, PWA, Service Worker
-Backend: Node.js, Express, файловое хранилище (orders.json)
+- Frontend: HTML, CSS, JS, PWA, Service Worker;
+- Backend: Node.js, Express, файловое хранилище (orders.json)
