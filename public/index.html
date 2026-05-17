@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Staff: заявки</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="header-top">
+        <h1>Hotel Management</h1>
+        <div class="status-container">
+          <div class="network-indicator">
+            <span id="status-dot" class="dot offline"></span>
+            <span id="status-label">Проверка связи...</span>
+          </div>
+          <button id="sync-btn" class="sync-button" title="Отправить несинхронизированные заявки на сервер">
+            <span id="sync-btn-text">Синхронизация</span>
+            <span id="sync-badge" class="badge hidden" title="Количество несинхронизированных действий">0</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <label>Статус заявки</label>
+          <select id="filter-status">
+            <option value="">Все статусы</option>
+            <option value="Новая">Новая</option>
+            <option value="В работе">В работе</option>
+            <option value="Выполнена">Выполнена</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Приоритет</label>
+          <select id="filter-priority">
+            <option value="">Любой</option>
+            <option value="Низкий">Низкий</option>
+            <option value="Средний">Средний</option>
+            <option value="Высокий">Высокий</option>
+          </select>
+        </div>
+        <button id="add-btn" class="primary-btn">Создать заявку</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="orders-list"></div>
+    <div id="empty-state" class="hidden">
+      <p>Заявок не найдено</p>
+    </div>
+  </main>
+
+  <!-- Модальное окно -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Новое задание</h2>
+      <form id="order-form">
+        <div class="filter-group">
+          <label>Номер комнаты / Объект</label>
+          <input type="text" id="roomNumber" placeholder="402 или Лобби" required>
+        </div>
+        <div class="filter-group">
+          <label>Тип услуги</label>
+          <select id="serviceType">
+            <option value="Уборка">Уборка</option>
+            <option value="Техслужба">Техслужба (ремонт)</option>
+            <option value="Доставка в номер">Доставка в номер</option>
+            <option value="Консьерж-сервис">Консьерж-сервис</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Описание</label>
+          <textarea id="description" rows="3" placeholder="Что именно нужно сделать?" required></textarea>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="filter-group">
+            <label>Приоритет</label>
+            <select id="priority">
+              <option value="Низкий">Низкий</option>
+              <option value="Средний" selected>Средний</option>
+              <option value="Высокий">Высокий</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Начальный статус</label>
+            <select id="status">
+              <option value="Новая">Новая</option>
+              <option value="В работе">В работе</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="primary-btn" style="margin-top: 1rem;">Добавить в систему</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
